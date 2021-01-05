@@ -1,6 +1,0 @@
-Animals amount: 27
-Grass amount: 41
-Average lifespan of dead: 42
-Average children amount: 1
-Average energy: 174
-Most common gen: [0, 0, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 5, 6, 6, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7]

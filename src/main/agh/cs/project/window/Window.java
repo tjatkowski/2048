@@ -17,8 +17,7 @@ public class Window extends PApplet {
     private ArrayList<GUI> gui;
 
     private Board board;
-
-    private int size = 7;
+    private int size = 4;
 
 
     private void loadAssets() {

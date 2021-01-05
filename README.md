@@ -1,6 +1,9 @@
-### AGH Java Project - Evolution simulation
+### AGH Java Project 2
 
-![](https://i.imgur.com/nyddPtJ.png)
+# 2048
+
+
+![](screenshots/video.gif)
 
 ## Dependencies
 

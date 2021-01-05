@@ -68,7 +68,7 @@ public class Tile extends Pawn {
         context.textFont((PFont)AssetsManager.ASSETS.get(AppStyle.FONT));
         context.textAlign(PApplet.CENTER, PApplet.CENTER);
         context.fill(AppStyle.TILE_TEXT_COLOR.getRGB());
-        context.textSize(AppStyle.TILE_VALUE_FONT_SIZE);
+        context.textSize(sizeFactor*AppStyle.TILE_VALUE_FONT_SIZE);
         context.text(Integer.toString(value), (float)AppStyle.TILE_PIXEL_SIZE/2.f, (float)AppStyle.TILE_PIXEL_SIZE/2.f);
         context.noFill();
     }
