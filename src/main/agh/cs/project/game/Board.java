@@ -38,7 +38,7 @@ public class Board extends Pawn {
     @Override
     protected void drawPawn(PApplet context) {
         context.fill(AppStyle.BOARD_COLOR.getRGB());
-        context.rect(0, 0, 5*AppStyle.TILE_PIXEL_GAP + 4*AppStyle.TILE_PIXEL_SIZE, 5*AppStyle.TILE_PIXEL_GAP + 4*AppStyle.TILE_PIXEL_SIZE);
+        context.rect(0, 0, (size+1)*AppStyle.TILE_PIXEL_GAP + size*AppStyle.TILE_PIXEL_SIZE, (size+1)*AppStyle.TILE_PIXEL_GAP + size*AppStyle.TILE_PIXEL_SIZE);
 
         tilesManager.draw(context);
 

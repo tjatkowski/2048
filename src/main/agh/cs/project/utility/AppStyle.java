@@ -18,11 +18,12 @@ public class AppStyle {
     public static int BUTTON_MARGIN = 10;
 
     public static int TILE_PIXEL_SIZE = 100;
-    public static int TILE_PIXEL_GAP = 5;
+    public static int TILE_PIXEL_GAP = 15;
     public static int TILE_ROUNDNESS = 8;
 
-    public static int TILE_SPEED = 80;
-    public static float TILE_VALUE_FONT_SIZE = 25.f;
+    public static int TILE_SPEED = 50;
+    public static float TILE_FADE_SPEED = 0.1f;
+    public static float TILE_VALUE_FONT_SIZE = 35.f;
     public static Color[] TILE_COLORS = new Color[]{
             new Color(255, 244, 230),
             new Color(255, 215, 195),
@@ -39,5 +40,8 @@ public class AppStyle {
             new Color(255, 254, 163),
     };
     public static Color BOARD_COLOR = new Color(183, 173, 168, 255);
+    public static Color TILE_TEXT_COLOR = new Color(84, 79, 77, 255);
     public static int TILE_COLORS_AMOUNT = 13;
+
+    public static String FONT = "font";
 }

@@ -42,25 +42,27 @@ public class TilesManager extends Pawn {
     }
 
     private void moved() {
-        int count = 0;
+        ArrayList<Vector2> emptySpaces = new ArrayList<>();
+
         for(int y = 0; y<size; ++y) {
-            for(int x = 0; x<size; ++x) {
-                if(tiles[y][x] != null)
-                    count++;
+            for (int x = 0; x < size; ++x) {
+                if(tiles[y][x] == null)
+                    emptySpaces.add(new Vector2(x, y));
             }
         }
-        System.out.println(count);
+
+        insertTile( emptySpaces.get(random.nextInt(emptySpaces.size())) );
 
     }
     public void moveLeft() {
-        MOVE LEFT JUZ DZIALA. PRZEKOPIUJ JEGO DZIALANIE DO RESZTY :D
         legacyTiles.clear();
         for(int y = 0; y<size; ++y) {
             int last = -1;
             for(int x = 0; x<size; ++x) {
                 if(tiles[y][x] != null) {
-                    if(last < 0 || tiles[y][last].getValue() != tiles[y][x].getValue()) {
-                        last++;
+                    if(last < 0 || tiles[y][last] == null || tiles[y][last].getValue() != tiles[y][x].getValue()) {
+                        if(last < 0 || tiles[y][last] != null)
+                            last++;
                         if(x != last) {
                             tiles[y][last] = tiles[y][x];
                             tiles[y][last].setBoardPosition(new Vector2(last, y));
@@ -80,8 +82,94 @@ public class TilesManager extends Pawn {
         }
         moved();
     }
+    public void moveRight() {
+        legacyTiles.clear();
+        for(int y = 0; y<size; ++y) {
+            int last = size;
+            for(int x = size-1; x>=0; --x) {
+                if(tiles[y][x] != null) {
+                    if(last > size-1 || tiles[y][last] == null || tiles[y][last].getValue() != tiles[y][x].getValue()) {
+                        if(last > size-1 || tiles[y][last] != null)
+                            last--;
+                        if(x != last) {
+                            tiles[y][last] = tiles[y][x];
+                            tiles[y][last].setBoardPosition(new Vector2(last, y));
+                            tiles[y][x] = null;
+                        }
+                    }
+                    else {
+                        tiles[y][last].combine();
 
-    /*public void moveLeft2() {
+                        tiles[y][x].setBoardPosition(new Vector2(last, y));
+                        legacyTiles.add(tiles[y][x]);
+                        tiles[y][x] = null;
+                        last--;
+                    }
+                }
+            }
+        }
+        moved();
+    }
+
+    public void moveUp() {
+        legacyTiles.clear();
+        for(int x = 0; x<size; ++x) {
+            int last = -1;
+            for(int y = 0; y<size; ++y) {
+                if(tiles[y][x] != null) {
+                    if(last < 0 || tiles[last][x] == null || tiles[last][x].getValue() != tiles[y][x].getValue()) {
+                        if(last < 0 || tiles[last][x] != null)
+                            last++;
+                        if(y != last) {
+                            tiles[last][x] = tiles[y][x];
+                            tiles[last][x].setBoardPosition(new Vector2(x, last));
+                            tiles[y][x] = null;
+                        }
+                    }
+                    else {
+                        tiles[last][x].combine();
+
+                        tiles[y][x].setBoardPosition(new Vector2(x, last));
+                        legacyTiles.add(tiles[y][x]);
+                        tiles[y][x] = null;
+                        last++;
+                    }
+                }
+            }
+        }
+        moved();
+    }
+
+    public void moveDown() {
+        legacyTiles.clear();
+        for(int x = 0; x<size; ++x) {
+            int last = size;
+            for(int y = size-1; y>=0; --y) {
+                if(tiles[y][x] != null) {
+                    if(last > size-1 || tiles[last][x] == null || tiles[last][x].getValue() != tiles[y][x].getValue()) {
+                        if(last > size-1 || tiles[last][x] != null)
+                            last--;
+                        if(y != last) {
+                            tiles[last][x] = tiles[y][x];
+                            tiles[last][x].setBoardPosition(new Vector2(x, last));
+                            tiles[y][x] = null;
+                        }
+                    }
+                    else {
+                        tiles[last][x].combine();
+
+                        tiles[y][x].setBoardPosition(new Vector2(x, last));
+                        legacyTiles.add(tiles[y][x]);
+                        tiles[y][x] = null;
+                        last--;
+                    }
+                }
+            }
+        }
+        moved();
+    }
+
+    /*public void moveLeft() {
         legacyTiles.clear();
         for(int y = 0; y<size; ++y) {
             int last = -1;
@@ -111,7 +199,7 @@ public class TilesManager extends Pawn {
                 tiles[y][x] = null;
         }
         moved();
-    }*/
+    }
     public void moveRight() {
         legacyTiles.clear();
         for(int y = 0; y<size; ++y) {
@@ -174,14 +262,7 @@ public class TilesManager extends Pawn {
         }
         moved();
     }
-    /* last = 0
-    t
-    t
-    n
-    T+
 
-
-     */
     public void moveUp() {
         legacyTiles.clear();
         for(int x = 0; x<size; ++x) {
@@ -212,7 +293,7 @@ public class TilesManager extends Pawn {
                 tiles[y][x] = null;
         }
         moved();
-    }
+    }*/
 
     public void insertTile(Vector2 position) {
         if(tiles[position.y][position.x] != null)

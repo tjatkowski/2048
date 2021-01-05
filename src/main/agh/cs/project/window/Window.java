@@ -18,13 +18,15 @@ public class Window extends PApplet {
 
     private Board board;
 
+    private int size = 7;
+
 
     private void loadAssets() {
         try {
-            //AssetsManager.ASSETS.put(AppStyle.ANIMAL_ASSET_KEY, loadImage("assets/animal.png"));
+            AssetsManager.ASSETS.put(AppStyle.FONT, createFont("Arial Bold", 15.f));
         }
         catch(Exception e) {
-            Logger.log("Cannot load graphic assets");
+            Logger.log("Cannot load assets");
         }
     }
 
@@ -40,12 +42,15 @@ public class Window extends PApplet {
         textSize(AppStyle.BUTTON_FONT_SIZE);
 
         gui = new ArrayList<>();
-        board = new Board(4);
+        board = new Board(size);
     }
 
     @Override
     public void settings() {
-        size(AppStyle.WINDOW_SIZE.x, AppStyle.WINDOW_SIZE.y);
+        size(
+                (size+1)*AppStyle.TILE_PIXEL_GAP + size*AppStyle.TILE_PIXEL_SIZE,
+                (size+1)*AppStyle.TILE_PIXEL_GAP + size*AppStyle.TILE_PIXEL_SIZE
+        );
     }
 
     @Override
