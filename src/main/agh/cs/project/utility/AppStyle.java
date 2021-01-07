@@ -28,7 +28,7 @@ public class AppStyle {
             new Color(255, 244, 230),
             new Color(255, 215, 195),
             new Color(255, 165, 150),
-            new Color(255, 156, 145),
+            new Color(255, 121, 104),
             new Color(255, 96, 122),
             new Color(255, 92, 184),
             new Color(244, 87, 255),
